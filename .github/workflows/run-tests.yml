@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: "express42/otus-homeworks"
-        ref: 2021-05
+        ref: 2021-11
         path: "./otus-homeworks/"
 
     - name: Run tests
