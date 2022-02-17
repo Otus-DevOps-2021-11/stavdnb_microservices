@@ -1,0 +1,13 @@
+REPOSITORY      TAG       IMAGE ID       CREATED              SIZE
+reddit          latest    9b9ea5751649   About a minute ago   647MB
+<none>          <none>    3b57702ceb81   About a minute ago   647MB
+<none>          <none>    738c51c1b3a4   About a minute ago   647MB
+<none>          <none>    5dd44f051714   About a minute ago   616MB
+<none>          <none>    03c31b96fe59   About a minute ago   616MB
+<none>          <none>    a485bef76d4b   About a minute ago   616MB
+<none>          <none>    5c826ffe0e2e   About a minute ago   616MB
+<none>          <none>    1f49ec256411   About a minute ago   616MB
+<none>          <none>    4d6e0e8c5c02   2 minutes ago        614MB
+<none>          <none>    570d9df370d8   4 minutes ago        102MB
+ubuntu          18.04     dcf4d4bef137   13 days ago          63.2MB
+tehbilly/htop   latest    4acd2b4de755   3 years ago          6.91MB

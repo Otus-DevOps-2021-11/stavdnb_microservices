@@ -1,0 +1,15 @@
+REPOSITORY               TAG           IMAGE ID       CREATED              SIZE
+stavdnb/nginx-tmp-file   latest        34601501adc3   About a minute ago   134MB
+live-network_php         latest        0b10a55f5d27   5 days ago           425MB
+mongo                    4.4           fe68158e8cbf   13 days ago          414MB
+ubuntu                   latest        a457a74c9aaa   13 days ago          65.6MB
+ubuntu                   18.04         1e7ccc70f4ca   13 days ago          56.6MB
+nginx                    latest        2e7e2ec411a6   2 weeks ago          134MB
+mysql/mysql-server       8.0-aarch64   0f37da883ef8   3 weeks ago          468MB
+docker                   git           9ab607b2188f   2 months ago         214MB
+alpine                   latest        8e1d7573f448   2 months ago         5.33MB
+nginx                    1.17.8        be681f5705e3   24 months ago        120MB
+
+
+docker inspect container - отображает информацию о состоянии контейнера полученными адресами примонтированным томам и прочее.
+docker inspect images - отображает информацию о содержании образа, перечислении sha слоев, даты создания и прочее.
