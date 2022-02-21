@@ -1,7 +1,32 @@
 # stavdnb_microservices
 stavdnb microservices repository
 
+###  Создание Volume
+Создаем том 
+ ```
+ docker volume create reddit_db
+ ```
+Монтируем том к папке с БД
+ ```
+ docker run -d --network=reddit --network-alias=post_db --network-alias=comment_db -v reddit_db:/data/db mongo:latest
+ ```
 
+
+Для выполнения задания со ЗВЕЗДОЧКОЙ необходимо 
+
+Вешаем новый алиас
+```
+ ~/git/stavdnb_microservices/src/ [docker-3+] docker run -d --network=reddit \
+--network-alias=post2 stavdock/post:1.0
+9e64fd386b19ef59884eef2296e58c8732e90ceec59a11ca79f9a1378ecf9dbe
+```
+Переопредяляем переменные окружения с помощью ключа -e 
+```
+ ~/git/stavdnb_microservices/src/ [docker-3+] docker run -d -e POST_SERVICE_HOST=post2 COMMENT_SERVICE_HOST=comment2 --network=reddit \                                
+-p 9292:9292 <your-dockerhub-login>/ui:1.0
+```
+
+Изменение размера с помощью образа alpine 
 
 HW-15 DOCKER-2
 
@@ -20,7 +45,7 @@ yc compute instance create \
   --zone ru-central1-a \
   --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
   --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1804-lts,size=15 \
-  --ssh-key ~/.ssh/id_rsa.pub
+  --ssh-key ~/.ssh/appuser.pub
 	
 docker-machine create \
   --driver generic \

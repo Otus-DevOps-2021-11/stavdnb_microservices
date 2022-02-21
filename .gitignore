@@ -5,6 +5,7 @@ variables.json
 *.tfvars
 .terraform/
 key.json
-../DS_Store
 *.retry
 jdauphant.nginx
+## python specific
+*.pyc
