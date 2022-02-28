@@ -1,0 +1,48 @@
+version: '3.3'
+services:
+  post_db:
+    hostname: post_db
+    container_name: post_db
+    image: mongo:${TAG_DB_VER}
+    volumes:
+      - post_db:/data/db
+    networks:
+      back_net:
+        aliases:
+           - comment_db
+           - post_db
+
+  ui:
+    hostname: ui
+    container_name: ui
+    build: ./ui
+    image: ${PROJECT}/ui:${TAG_APP_VER}
+    ports:
+      - ${APP_PORT}:9292/tcp
+    networks:
+      - front_net
+  post:
+    hostname: post
+    container_name: post
+    build: ./post-py
+    image: ${PROJECT}/post:${TAG_APP_VER}
+    networks:
+      - front_net
+      - back_net
+  comment:
+    hostname: comment
+    container_name: comment
+    build: ./comment
+    image: ${PROJECT}/comment:${TAG_APP_VER}
+    networks:
+      - front_net
+      - back_net
+
+volumes:
+  post_db:
+
+networks:
+  front_net:
+    name: front_net
+  back_net:
+    name: back_net

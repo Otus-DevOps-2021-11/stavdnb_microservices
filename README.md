@@ -1,7 +1,44 @@
 # stavdnb_microservices
 stavdnb microservices repository
 
-###  Создание Volume
+### HW-17 DOCKER-4
+
+1) Позапускали несколько раз контейнеры с разным типом сетей, и посмотрели вывод на докер машине.
+тип драйвера HOST, единственный кто использует сеть хоста , поэтому создает контейнер в 1 экземпляре. 
+Bridge и none можно создавать в различных кол-вах/
+
+```
+ ~/ docker-machine ssh super-host sudo ip netns
+9220260da77a (id: 2)
+cac11da39435 (id: 1)
+f2ff01ab2214 (id: 0)
+ba581c4f427f
+dc87c857a2f7
+default
+```
+Подключение к доп сетям осуществляется через комманду network connect где мы указываем имя сети и подключаемый к ней контейнер
+```
+docker network connect front_net post
+```
+Базовое имя проекта образуется исходя из имени директории в которой запускается docker-compose.yml
+
+Для того чтобы заменить имя проекта можно запускать с флагом -p PROJECT_NAME либо переопределить имена контейнеров **container_name: CONT_NAME** и имена сетей используя **name: NET_NAME**
+
+Также если требуется использовать несколько сетей можно использовать алиасы 
+
+```
+networks:
+      back_net:
+        aliases:
+           - comment_db
+           - post_db
+```
+
+
+
+### HW-16 DOCKER-3
+
+####  Создание Volume
 Создаем том 
  ```
  docker volume create reddit_db
@@ -28,7 +65,7 @@ stavdnb microservices repository
 
 Изменение размера с помощью образа alpine 
 
-HW-15 DOCKER-2
+### HW-15 DOCKER-2
 
 В ходе задания установлена docker-machine 
 ```
