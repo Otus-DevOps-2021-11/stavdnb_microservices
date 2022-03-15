@@ -18,6 +18,7 @@ build_job:
   stage: build
   script:
     - echo 'Building'
+    - curl -X POST --data-urlencode "payload={\"text\""":"" \"GITLAB SAY  BUILD-DsssssONE.\",}" https://hooks.slack.com/services/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
 
 test_unit_job:
   stage: test
