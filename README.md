@@ -1,6 +1,27 @@
 # stavdnb_microservices
 stavdnb microservices repository
 
+### HW-18 GITLAB-CI-1
+из полезного можно отметить регистрацию раннера в контейнере докер 
+
+```
+docker exec -it gitlab-runner gitlab-runner register \
+    --url http://<your-ip>/ \
+    --non-interactive \
+    --locked=false \
+    --name DockerRunner \
+    --executor docker \
+    --docker-image alpine:latest \
+    --registration-token <your-token> \
+    --tag-list "linux,xenial,ubuntu,docker" \
+    --run-untagged
+```
+Также необходимо уделить внимание заданию со звездочкой 
+
+Так как у нас развернут свой гитлаб, то приложение гитлаб для слак мы установить не можем, и передаем инфу через веб-хуки. Строка запроса должна быть след. вида,обращаем внимание на ковычки(!)
+```
+curl -X POST --data-urlencode "payload={\"text\""":"" \"GITLAB SAY  BUILD-DsssssONE.\",}" https://hooks.slack.com/services/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
+```
 ### HW-17 DOCKER-4
 
 1) Позапускали несколько раз контейнеры с разным типом сетей, и посмотрели вывод на докер машине.
