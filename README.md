@@ -1,5 +1,19 @@
 # stavdnb_microservices
 stavdnb microservices repository
+### HW-19 MONITORING-1
+
+из полезного
+
+АКТИВНЕЕ ИСПОЛЬЗОВАТЬ docker inspect
+
+При подключении mongodb-exporter столкнулся с проблемой и долго не мог понять почему он не цепляется к нему по сети
+
+```
+command:
+          - '--web.listen-address=:9216'
+          - '--mongodb.uri=mongodb://post_db:27017'
+```
+Также нужно явно указывать версию, латест не понимает.
 
 ### HW-18 GITLAB-CI-1
 из полезного можно отметить регистрацию раннера в контейнере докер 
