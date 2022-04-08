@@ -20,6 +20,13 @@ services:
     container_name: ui
     #build: ./ui
     image: ${PROJECT}/ui:${TAG_APP_VER}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: service.ui
     ports:
       - ${APP_PORT}:9292/tcp
     networks:
@@ -29,6 +36,13 @@ services:
     container_name: post
     #build: ./post-py
     image: ${PROJECT}/post:${TAG_APP_VER}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: service.post
     networks:
       - front_net
       - back_net
@@ -37,6 +51,8 @@ services:
     container_name: comment
     #build: ./comment
     image: ${PROJECT}/comment:${TAG_APP_VER}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     networks:
       - front_net
       - back_net

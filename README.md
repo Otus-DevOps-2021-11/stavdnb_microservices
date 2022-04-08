@@ -1,5 +1,18 @@
 # stavdnb_microservices
 stavdnb microservices repository
+
+### HW-20 LOGGING-1
+из полезного
+
+управление компоуз файлом с отличным именем, и управление отдельным контейнером
+```
+docker-compose -f docker-compose-logging.yml up -d fluentd
+```
+при написании docker-compose image лучше использовать с версией во избежании проблем
+
+Изучил как работают grok шаблоны
+
+
 ### HW-19 MONITORING-1
 
 из полезного
