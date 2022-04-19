@@ -1,6 +1,38 @@
 # stavdnb_microservices
 stavdnb microservices repository
 
+### HW-21 KUBERNETES-1
+
+
+Install for Mac OS
+```
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+kubectl version --client
+brew install minikube
+```
+Start Minicube 
+
+```
+minikube start --driver=docker
+minikube config set driver docker
+```
+kubectl get nodes
+
+install network plugin 
+
+```
+minikube start --network-plugin=cni
+kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
+```
+apply manifest app-post
+list pods
+```
+kubectl apply -f post-deployment.yml
+kubectl get pods --all-namespaces
+```
+
 ### HW-20 LOGGING-1
 из полезного
 

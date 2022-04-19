@@ -1,5 +1,7 @@
 variables.json
 *.tfstate
+.DS_Store
+*.DS_Store
 *.tfstate.*.backup
 *.tfstate.backup
 *.tfvars
