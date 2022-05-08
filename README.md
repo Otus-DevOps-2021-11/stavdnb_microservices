@@ -4,6 +4,26 @@ stavdnb microservices repository
 ### HW-21 KUBERNETES-2
 
 ## Полезное
+как подключить YC 
+
+```
+yc managed-kubernetes cluster get-credentials test-cluster --external
+
+ ~/ kubectl config current-context
+yc-test-cluster
+```
+
+
+
+Как быстро посмотреть полученный нод порт
+
+```
+kubectl describe service ui  -n dev | grep NodePort
+Type:                     NodePort
+NodePort:                 <unset>  32729/TCP
+```
+
+
 Forwarding ports for local test
 
 ```
