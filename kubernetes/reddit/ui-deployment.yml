@@ -1,18 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-   name: ui-deployment
-spec:
-   replicas: 1
-   selector:
-     matchLabels:
-       app: ui
-   template:
-     metadata:
-       name: ui
-       labels:
-         app: ui
-     spec:
-       containers:
-       - image: snailsly/ui
-         name: ui
+metadata: # Блок метаданных деплоя
+  name: ui
+  labels:
+    app: reddit
+    component: ui
+spec: # Блок спецификации деплоя
+  replicas: 3
+  selector:
+    matchLabels:
+      app: reddit
+      component: ui
+  template: # Блок описания POD-ов
+    metadata:
+      name: ui-pod
+      labels:
+        app: reddit
+        component: ui
+    spec:
+      containers:
+      - image: snailsly/ui # НА_ЭТОМ МЕСТЕ ДОЛЖЕН БЫТЬ СВОЙ ОБРАЗ
+        name: ui

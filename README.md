@@ -1,6 +1,75 @@
 # stavdnb_microservices
 stavdnb microservices repository
 
+### HW-21 KUBERNETES-2
+
+## Полезное
+как подключить YC 
+
+```
+yc managed-kubernetes cluster get-credentials test-cluster --external
+
+ ~/ kubectl config current-context
+yc-test-cluster
+```
+
+
+
+Как быстро посмотреть полученный нод порт
+
+```
+kubectl describe service ui  -n dev | grep NodePort
+Type:                     NodePort
+NodePort:                 <unset>  32729/TCP
+```
+
+
+Forwarding ports for local test
+
+```
+kubectl port-forward ui-745497c4f5-j858n 9292:9292
+```
+
+Проверяем Endpoints
+```
+ ~/git/stavdnb_microservices/kubernetes/reddit/ [kubernetes-2*] kubectl describe service comment  | grep Endpoints
+Endpoints:         10.244.1.5:9292
+ ~/git/stavdnb_microservices/kubernetes/reddit/ [kubernetes-2*] kubectl describe service post  | grep Endpoints
+Endpoints:         10.244.1.3:5000
+```
+Запускаем комманду nslookup из под POD post и убеждаемся , что теперь мы видим comment по имени, благодаря описанным файлам comment-service.yml post-service.yml , мы описываем DNS имена, в Docker Swarm аналог , network alias
+```
+ ~/git/stavdnb_microservices/kubernetes/reddit/ [kubernetes-2*] kubectl exec -ti post-758c64d668-qt6pr nslookup comment
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+nslookup: can't resolve '(null)': Name does not resolve
+
+Name:      comment
+Address 1: 10.106.76.66 comment.default.svc.cluster.local
+```
+Смотрим список опубликованных сервисов 
+```
+ ~/git/stavdnb_microservices/kubernetes/reddit/ [kubernetes-2*] minikube service list
+|----------------------|---------------------------|--------------|-----|
+|      NAMESPACE       |           NAME            | TARGET PORT  | URL |
+|----------------------|---------------------------|--------------|-----|
+| default              | comment                   | No node port |
+| default              | comment-db                | No node port |
+| default              | kubernetes                | No node port |
+| default              | mongodb                   | No node port |
+| default              | post                      | No node port |
+| default              | post-db                   | No node port |
+| default              | ui                        |         9292 |     |
+| kube-system          | kube-dns                  | No node port |
+| kubernetes-dashboard | dashboard-metrics-scraper | No node port |
+| kubernetes-dashboard | kubernetes-dashboard      | No node port |
+|----------------------|---------------------------|--------------|-----|
+```
+А список установленных расширений через команду 
+
+```
+minikube addons list
+```
+
 ### HW-21 KUBERNETES-1
 
 
