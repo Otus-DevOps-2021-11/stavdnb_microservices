@@ -1,6 +1,18 @@
 # stavdnb_microservices
 stavdnb microservices repository
 
+### HW-22 KUBERNETES-3
+
+## Полезное
+
+Далее подготовим сертификат используя IP как CN
+```$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=35.190.66.90"
+```
+И загрузит сертификат в кластер kubernetes
+```
+$ kubectl create secret tls ui-ingress --key tls.key --cert tls.crt -n dev
+```
+
 ### HW-21 KUBERNETES-2
 
 ## Полезное
